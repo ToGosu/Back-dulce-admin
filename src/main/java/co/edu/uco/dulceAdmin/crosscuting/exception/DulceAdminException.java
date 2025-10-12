@@ -10,13 +10,12 @@ public final class DulceAdminException extends RuntimeException {
 	private static String userMessage;
 	private String technicalMessage;
 	
-	private DulceAdminException(final Throwable rootException, final String suerMessage, String userMessage2) {
+	private DulceAdminException(final Throwable rootException, final String userMessage, final String technicalMessage) {
 		setRootException(rootException);
-		setUserMessage(suerMessage);
-		setTechnicalMessage(suerMessage);
-	
+		setUserMessage(userMessage);
+		setTechnicalMessage(technicalMessage);
 	}
-	
+
 	public static DulceAdminException create(final String userMessage) {
 		return new DulceAdminException(new Exception(), userMessage, userMessage);
 	}
@@ -25,7 +24,7 @@ public final class DulceAdminException extends RuntimeException {
 		return new DulceAdminException(new Exception(), userMessage, technicalMessage);
 	}
 	
-	public static DulceAdminException create(final Throwable rootException, final String userMessage, final String technicalMessage) {
+	public static DulceAdminException create(final String userMessage, final String technicalMessage, final Throwable rootException) {
 		return new DulceAdminException(rootException, userMessage, technicalMessage);
 	}
 	
@@ -50,7 +49,5 @@ public final class DulceAdminException extends RuntimeException {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
-	
 	
 }

@@ -44,6 +44,16 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>co.edu.uco.nose</groupId>
+			<artifactId>api-nose</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>co.edu.uco.IS2dulceAdmin</groupId>
+			<artifactId>IS2-dulce-admin</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<build>
