@@ -15,15 +15,15 @@ public class ProductoReciboDTO extends DTO {
 
 	public ProductoReciboDTO() {
 		super(UUIDHelper.getUUIDHelper().getDefault());
-		setProducto(new ProductoDTO());
-		setRecibo(new ReciboDTO());
+		setProducto(ProductoDTO.createDefault());
+		setRecibo(ReciboDTO.createDefault());
 		setCantidad(NumericHelper.getDefault());
 	}
 
 	public ProductoReciboDTO(final UUID id) {
 		super(id);
-		setProducto(new ProductoDTO());
-		setRecibo(new ReciboDTO());
+		setProducto(ProductoDTO.createDefault());
+		setRecibo(ReciboDTO.createDefault());
 		setCantidad(NumericHelper.getDefault());
 	}
 

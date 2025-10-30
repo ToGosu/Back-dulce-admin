@@ -27,5 +27,9 @@ public final class UUIDHelper {
 				:UUID.fromString(uuidAsString);
 		
 	}
+	public boolean isDefaultUUID(final UUID value) {
+	    return value == null || value.equals(UUIDHelper.getUUIDHelper().getDefault());
+	}
+
 }
 

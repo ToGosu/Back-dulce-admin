@@ -21,7 +21,7 @@ public class TrabajadorDomain extends Domain{
 		setApellido(TextHelper.getDefault());
 		setIdentificacion(TextHelper.getDefault());
 		setNumeroCelular(TextHelper.getDefault());
-		setRol(new RolTrabajadorDomain());
+		setRol(RolTrabajadorDomain.createDefault());
 		setContraseñaInicioSesion(TextHelper.getDefault());
 	}
 	public TrabajadorDomain(final UUID id) {
@@ -30,7 +30,7 @@ public class TrabajadorDomain extends Domain{
 		setApellido(TextHelper.getDefault());
 		setIdentificacion(TextHelper.getDefault());
 		setNumeroCelular(TextHelper.getDefault());
-		setRol(new RolTrabajadorDomain());
+		setRol(RolTrabajadorDomain.createDefault());
 		setContraseñaInicioSesion(TextHelper.getDefault());
 	}
 	public TrabajadorDomain(final UUID id, final String nombre, final String apellido, final String identificacion, final String numeroCelular, final RolTrabajadorDomain rol, final String contraseñaInicioSesion) {
@@ -79,6 +79,9 @@ public class TrabajadorDomain extends Domain{
 		this.contraseñaInicioSesion = TextHelper.getDefaultWithTrim(contraseñaInicioSesion);
 	}
 	
+	public static TrabajadorDomain createDefault() {
+		return new TrabajadorDomain();
+	}
 	
 	
 	

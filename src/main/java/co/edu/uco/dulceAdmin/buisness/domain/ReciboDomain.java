@@ -19,19 +19,19 @@ public class ReciboDomain extends Domain{
 	
 	public ReciboDomain() {
 		super(UUIDHelper.getUUIDHelper().getDefault());
-	    setCliente(new ClienteDomain());
-	    setMetodoPago(new MetodoPagoDomain());
+	    setCliente(ClienteDomain.createDefault());
+	    setMetodoPago(MetodoPagoDomain.createDefault());
 	    setCodigo(NumericHelper.getDefault());
-	    setTrabajador(new TrabajadorDomain());
+	    setTrabajador(TrabajadorDomain.createDefault());
 	    setProductosRecibo(new ArrayList<>());
 	    }
 	   
 	public ReciboDomain(final UUID id) {
 		super(id);
-	    setCliente(new ClienteDomain());
-	    setMetodoPago(new MetodoPagoDomain());
+	    setCliente(ClienteDomain.createDefault());
+	    setMetodoPago(MetodoPagoDomain.createDefault());
 	    setCodigo(NumericHelper.getDefault());
-	    setTrabajador(new TrabajadorDomain());
+	    setTrabajador(TrabajadorDomain.createDefault());
 	    setProductosRecibo(new ArrayList<>());
 	    }
 	public BigDecimal getTotal() {
@@ -87,6 +87,8 @@ public class ReciboDomain extends Domain{
 	public void setProductosRecibo(final List<ProductoReciboDomain> productosRecibo) {
 		this.productosRecibo = ObjectHelper.getDefault(productosRecibo, new ArrayList<>());
 	}
-	
+	public static ReciboDomain createDefault() {
+		return new ReciboDomain();
+	}
 	
 }

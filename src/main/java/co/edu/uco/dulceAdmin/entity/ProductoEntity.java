@@ -17,14 +17,14 @@ public class ProductoEntity extends Entity {
 		super(UUIDHelper.getUUIDHelper().getDefault());
 		setNombre(TextHelper.getDefault());
 		setPrecio(NumericHelper.getDefault());
-		setTipo(new TipoProductoEntity());
+		setTipo(TipoProductoEntity.createDefault());
 	}
 	
 	public ProductoEntity(final UUID id) {
 		super(id);
 		setNombre(TextHelper.getDefault());
 		setPrecio(NumericHelper.getDefault());
-		setTipo(new TipoProductoEntity());
+		setTipo(TipoProductoEntity.createDefault());
 	}
 	
 	public ProductoEntity(final UUID id, final String nombre, final Integer precio, final TipoProductoEntity tipo) {
@@ -56,5 +56,8 @@ public class ProductoEntity extends Entity {
 	
 	public void setTipo(final TipoProductoEntity tipo) {
 		this.tipo = ObjectHelper.getDefault(tipo, new TipoProductoEntity());
+	}
+	public static ProductoEntity createDefault() {
+		return new ProductoEntity();
 	}
 }

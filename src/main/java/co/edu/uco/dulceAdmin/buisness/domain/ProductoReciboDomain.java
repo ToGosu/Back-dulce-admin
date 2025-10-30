@@ -16,16 +16,16 @@ public class ProductoReciboDomain extends Domain{
 	
 	public ProductoReciboDomain() {
 		super(UUIDHelper.getUUIDHelper().getDefault());
-		setProducto(new ProductoDomain());
-		setRecibo(new ReciboDomain());
+		setProducto(ProductoDomain.createDefault());
+		setRecibo(ReciboDomain.createDefault());
 		setCantidad(NumericHelper.getDefault());
 		
 	}
 	
     public ProductoReciboDomain(final UUID id) {
         super(id);
-        setProducto(new ProductoDomain());
-        setRecibo(new ReciboDomain());
+		setProducto(ProductoDomain.createDefault());
+		setRecibo(ReciboDomain.createDefault());
         setCantidad(NumericHelper.getDefault());
     }
 

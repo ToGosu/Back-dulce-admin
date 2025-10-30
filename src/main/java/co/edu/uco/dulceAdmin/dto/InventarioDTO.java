@@ -20,7 +20,7 @@ public class InventarioDTO extends DTO {
 
 	public InventarioDTO() {
 		super(UUIDHelper.getUUIDHelper().getDefault());
-		setProducto(new ProductoDTO());
+		setProducto(ProductoDTO.createDefault());
 		setStock(NumericHelper.getDefault());
 		setEsPerecedero(BooleanHelper.getDefault());
 		setFechaCreacion(DateHelper.getDefault());
@@ -29,7 +29,7 @@ public class InventarioDTO extends DTO {
 	
 	public InventarioDTO(final UUID id) {
 		super(id);
-		setProducto(new ProductoDTO());
+		setProducto(ProductoDTO.createDefault());
 		setStock(NumericHelper.getDefault());
 		setEsPerecedero(BooleanHelper.getDefault());
 		setFechaCreacion(DateHelper.getDefault());
@@ -87,5 +87,8 @@ public class InventarioDTO extends DTO {
 	public void setFechaVencimiento(final Date fechaVencimiento) {
 		this.fechaVencimiento = ObjectHelper.getDefault(fechaVencimiento, 
 				DateHelper.calculateExpirationDate(this.fechaCreacion, this.esPerecedero));
+	}
+	public static InventarioDTO createDefault() {
+		return new InventarioDTO();
 	}
 }

@@ -37,4 +37,7 @@ public class TipoProductoDomain extends Domain{
 	public void setDescripcion(final String descripcion) {
 		this.descripcion = TextHelper.getDefaultWithTrim(descripcion);
 	}
+	public static TipoProductoDomain createDefault() {
+		return new TipoProductoDomain();
+	}
 }

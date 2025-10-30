@@ -2,18 +2,16 @@ package co.edu.uco.dulceAdmin.crosscuting.helper;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-
 import co.edu.uco.dulceAdmin.crosscuting.exception.DulceAdminException;
-import co.edu.uco.dulceAdmin.crosscuting.helper.ObjectHelper;
 import co.edu.uco.dulceAdmin.crosscuting.messagescatalog.MessagesEnum;
 
-public class SqlConnectionHelper {
-
+public final class SqlConnectionHelper {
 
     private SqlConnectionHelper() {
     }
 
     public static void ensureConnectionIsNotNull(final Connection connection) {
+
         if (ObjectHelper.isNull(connection)) {
             var userMessage = MessagesEnum.USER_ERROR_SQL_CONNECTION_IS_EMPTY.getContent();
             var technicalMessage = MessagesEnum.TECHNICAL_ERROR_SQL_CONNECTION_IS_EMPTY.getContent();
@@ -31,18 +29,20 @@ public class SqlConnectionHelper {
                 var technicalMessage = MessagesEnum.TECHNICAL_ERROR_SQL_CONNECTION_IS_CLOSED.getContent();
                 throw DulceAdminException.create(userMessage, technicalMessage);
             }
+
         } catch (final SQLException exception) {
             var userMessage = MessagesEnum.USER_ERROR_SQL_CONNECTION_UNEXPECTED_ERROR_VALIDATING_CONNECTION_STATUS
                     .getContent();
             var technicalMessage = MessagesEnum.TECHNICAL_ERROR_SQL_CONNECTION_SQL_EXCEPTION_VALIDATING_CONNECTION_STATUS
                     .getContent();
-            throw DulceAdminException.create(userMessage, technicalMessage, exception);
+            throw DulceAdminException.create(exception, userMessage, technicalMessage);
+
         } catch (final Exception exception) {
             var userMessage = MessagesEnum.USER_ERROR_SQL_CONNECTION_UNEXPECTED_ERROR_VALIDATING_CONNECTION_STATUS
                     .getContent();
             var technicalMessage = MessagesEnum.TECHNICAL_ERROR_SQL_CONNECTION_UNEXPECTED_ERROR_VALIDATING_CONNECTION_STATUS
                     .getContent();
-            throw DulceAdminException.create(userMessage, technicalMessage, exception);
+            throw DulceAdminException.create(exception, userMessage, technicalMessage);
         }
     }
 
@@ -56,18 +56,20 @@ public class SqlConnectionHelper {
                 var technicalMessage = MessagesEnum.TECHNICAL_ERROR_TRANSACTION_IS_NOT_STARTED.getContent();
                 throw DulceAdminException.create(userMessage, technicalMessage);
             }
+
         } catch (final SQLException exception) {
             var userMessage = MessagesEnum.USER_ERROR_SQL_CONNECTION_UNEXPECTED_ERROR_VALIDATING_TRANSACTION_IS_STARTED
                     .getContent();
             var technicalMessage = MessagesEnum.TECHNICAL_ERROR_SQL_CONNECTION_SQL_EXCEPTION_VALIDATING_TRANSACTION_IS_STARTED
                     .getContent();
-            throw DulceAdminException.create(userMessage, technicalMessage, exception);
+            throw DulceAdminException.create(exception, userMessage, technicalMessage);
+
         } catch (final Exception exception) {
             var userMessage = MessagesEnum.USER_ERROR_SQL_CONNECTION_UNEXPECTED_ERROR_VALIDATING_TRANSACTION_IS_STARTED
                     .getContent();
             var technicalMessage = MessagesEnum.TECHNICAL_ERROR_SQL_CONNECTION_UNEXPECTED_ERROR_VALIDATING_TRANSACTION_IS_STARTED
                     .getContent();
-            throw DulceAdminException.create(userMessage, technicalMessage, exception);
+            throw DulceAdminException.create(exception, userMessage, technicalMessage);
         }
     }
 
@@ -76,26 +78,27 @@ public class SqlConnectionHelper {
         ensureConnectionIsOpen(connection);
 
         try {
+
             if (!connection.getAutoCommit()) {
-                var userMessage = MessagesEnum.USER_ERROR_TRANSACTION_IS_NOT_STARTED.getContent();
-                var technicalMessage = MessagesEnum.TECHNICAL_ERROR_TRANSACTION_IS_NOT_STARTED.getContent();
+                var userMessage = MessagesEnum.USER_ERROR_TRANSACTION_IS_STARTED.getContent();
+                var technicalMessage = MessagesEnum.TECHNICAL_ERROR_TRANSACTION_IS_STARTED.getContent();
                 throw DulceAdminException.create(userMessage, technicalMessage);
             }
+
         } catch (final SQLException exception) {
-            var userMessage = MessagesEnum.USER_ERROR_SQL_CONNECTION_UNEXPECTED_ERROR_VALIDATING_TRANSACTION_IS_STARTED
+            var userMessage = MessagesEnum.USER_ERROR_SQL_CONNECTION_UNEXPECTED_ERROR_VALIDATING_TRANSACTION_IS_NOT_STARTED
                     .getContent();
-            var technicalMessage = MessagesEnum.TECHNICAL_ERROR_SQL_CONNECTION_SQL_EXCEPTION_VALIDATING_TRANSACTION_IS_STARTED
+            var technicalMessage = MessagesEnum.TECHNICAL_ERROR_SQL_CONNECTION_SQL_EXCEPTION_VALIDATING_TRANSACTION_IS_NOT_STARTED
                     .getContent();
-            throw DulceAdminException.create(userMessage, technicalMessage, exception);
+            throw DulceAdminException.create(exception, userMessage, technicalMessage);
+
         } catch (final Exception exception) {
-            var userMessage = MessagesEnum.USER_ERROR_SQL_CONNECTION_UNEXPECTED_ERROR_VALIDATING_TRANSACTION_IS_STARTED
+            var userMessage = MessagesEnum.USER_ERROR_SQL_CONNECTION_UNEXPECTED_ERROR_VALIDATING_TRANSACTION_IS_NOT_STARTED
                     .getContent();
-            var technicalMessage = MessagesEnum.TECHNICAL_ERROR_SQL_CONNECTION_UNEXPECTED_ERROR_VALIDATING_TRANSACTION_IS_STARTED
+            var technicalMessage = MessagesEnum.TECHNICAL_ERROR_SQL_CONNECTION_UNEXPECTED_ERROR_VALIDATING_TRANSACTION_IS_NOT_STARTED
                     .getContent();
-            throw DulceAdminException.create(userMessage, technicalMessage, exception);
+            throw DulceAdminException.create(exception, userMessage, technicalMessage);
         }
     }
     
-    
-
 }

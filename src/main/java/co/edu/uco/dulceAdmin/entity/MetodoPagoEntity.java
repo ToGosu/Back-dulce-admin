@@ -31,4 +31,7 @@ public class MetodoPagoEntity extends Entity {
 	public void setNombre(final String nombre) {
 		this.nombre = TextHelper.getDefaultWithTrim(nombre);
 	}
+	public static MetodoPagoEntity createDefault() {
+		return new MetodoPagoEntity();
+	}
 }

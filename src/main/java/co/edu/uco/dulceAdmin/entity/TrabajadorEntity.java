@@ -21,7 +21,7 @@ public class TrabajadorEntity extends Entity {
 		setApellido(TextHelper.getDefault());
 		setIdentificacion(TextHelper.getDefault());
 		setNumeroCelular(TextHelper.getDefault());
-		setRol(new RolTrabajadorEntity());
+		setRol(RolTrabajadorEntity.createDefault());
 		setContraseñaInicioSesion(TextHelper.getDefault());
 	}
 
@@ -31,12 +31,17 @@ public class TrabajadorEntity extends Entity {
 		setApellido(TextHelper.getDefault());
 		setIdentificacion(TextHelper.getDefault());
 		setNumeroCelular(TextHelper.getDefault());
-		setRol(new RolTrabajadorEntity());
+		setRol(RolTrabajadorEntity.createDefault());
 		setContraseñaInicioSesion(TextHelper.getDefault());
 	}
 
-	public TrabajadorEntity(final UUID id, final String nombre, final String apellido, final String identificacion,
-			final String numeroCelular, final RolTrabajadorEntity rol, final String contraseñaInicioSesion) {
+	public TrabajadorEntity(final UUID id, 
+			final String nombre, 
+			final String apellido, 
+			final String identificacion,
+			final String numeroCelular, 
+			final RolTrabajadorEntity rol, 
+			final String contraseñaInicioSesion) {
 		super(id);
 		setNombre(nombre);
 		setApellido(apellido);
@@ -92,5 +97,8 @@ public class TrabajadorEntity extends Entity {
 
 	public void setContraseñaInicioSesion(final String contraseñaInicioSesion) {
 		this.contraseñaInicioSesion = TextHelper.getDefaultWithTrim(contraseñaInicioSesion);
+	}
+	public static TrabajadorEntity createDefault() {
+		return new TrabajadorEntity();
 	}
 }

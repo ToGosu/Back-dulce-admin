@@ -19,18 +19,18 @@ public class ReciboEntity extends Entity {
 
 	public ReciboEntity() {
 		super(UUIDHelper.getUUIDHelper().getDefault());
-		setCliente(new ClienteEntity());
-		setTrabajador(new TrabajadorEntity());
-		setMetodoPago(new MetodoPagoEntity());
+		setCliente(ClienteEntity.createDefault());
+		setTrabajador(TrabajadorEntity.createDefault());
+		setMetodoPago(MetodoPagoEntity.createDefault());
 		setCodigo(NumericHelper.getDefault());
 		setProductosRecibo(new ArrayList<>());
 	}
 
 	public ReciboEntity(final UUID id) {
 		super(id);
-		setCliente(new ClienteEntity());
-		setTrabajador(new TrabajadorEntity());
-		setMetodoPago(new MetodoPagoEntity());
+		setCliente(ClienteEntity.createDefault());
+		setTrabajador(TrabajadorEntity.createDefault());
+		setMetodoPago(MetodoPagoEntity.createDefault());
 		setCodigo(NumericHelper.getDefault());
 		setProductosRecibo(new ArrayList<>());
 	}
@@ -89,5 +89,8 @@ public class ReciboEntity extends Entity {
 		return productosRecibo.stream()
 				.map(ProductoReciboEntity::getTotalProducto)
 				.reduce(BigDecimal.ZERO, BigDecimal::add);
+	}
+	public static ReciboEntity createDefault() {
+		return new ReciboEntity();
 	}
 }

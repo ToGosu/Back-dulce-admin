@@ -27,4 +27,7 @@ public class RolTrabajadorDomain extends Domain{
 	public void setNombre(final String nombre) {
 		this.nombre = TextHelper.getDefaultWithTrim(nombre);
 	}
+	public static RolTrabajadorDomain createDefault() {
+		return new RolTrabajadorDomain();
+	}
 }

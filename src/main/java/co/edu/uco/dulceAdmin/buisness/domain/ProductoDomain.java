@@ -17,14 +17,14 @@ public class ProductoDomain extends Domain{
 		super(UUIDHelper.getUUIDHelper().getDefault());
 		setNombre(TextHelper.getDefault());
 		setPrecio(NumericHelper.getDefault());
-		setTipo(new TipoProductoDomain());
+		setTipo(TipoProductoDomain.createDefault());
 	}
 	
 	public ProductoDomain(final UUID id) {
 		super(id);
 		setNombre(TextHelper.getDefault());
 		setPrecio(NumericHelper.getDefault());
-		setTipo(new TipoProductoDomain());
+		setTipo(TipoProductoDomain.createDefault());
 	}
 	public ProductoDomain(final UUID id, final String nombre, final int precio, final TipoProductoDomain tipo) {
 		super(id);
@@ -51,4 +51,7 @@ public class ProductoDomain extends Domain{
 		this.tipo = ObjectHelper.getDefault(tipo, new TipoProductoDomain());
 	}
 
+	public static ProductoDomain createDefault() {
+		return new ProductoDomain();
+	}
 }

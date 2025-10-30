@@ -80,5 +80,7 @@ public class ClienteDomain extends Domain {
 	public void setCorreo(final String correo) {
 		this.correo = TextHelper.getDefaultWithTrim(correo);
 	}
-	
+	public static ClienteDomain createDefault() {
+		return new ClienteDomain();
+	}
 }

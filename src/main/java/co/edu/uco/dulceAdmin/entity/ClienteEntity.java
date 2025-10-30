@@ -36,7 +36,10 @@ public class ClienteEntity extends Entity {
 		setCorreo(TextHelper.getDefault());
 	}
 	
-	public ClienteEntity(final UUID id, final String nombre, final String apellido, final String identificacion, final String celular, final Date fechaNacimiento, final String correo) {
+	public ClienteEntity(final UUID id, final String nombre,
+			final String apellido, final String identificacion,
+			final String celular, final Date fechaNacimiento,
+			final String correo) {
 		super(id);
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -81,5 +84,8 @@ public class ClienteEntity extends Entity {
 	}
 	public void setCorreo(final String correo) {
 		this.correo = TextHelper.getDefaultWithTrim(correo);
+	}
+	public static ClienteEntity createDefault() {
+		return new ClienteEntity();
 	}
 }

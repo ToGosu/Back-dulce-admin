@@ -43,4 +43,7 @@ public class TipoProductoDTO extends DTO {
 	public void setDescripcion(final String descripcion) {
 		this.descripcion = TextHelper.getDefaultWithTrim(descripcion);
 	}
+	public static TipoProductoDTO createDefault() {
+		return new TipoProductoDTO();
+	}
 }

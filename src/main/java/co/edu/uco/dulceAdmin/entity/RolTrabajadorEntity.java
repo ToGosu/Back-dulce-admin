@@ -31,4 +31,8 @@ public class RolTrabajadorEntity extends Entity {
 	public void setNombre(final String nombre) {
 		this.nombre = TextHelper.getDefaultWithTrim(nombre);
 	}
+	public static RolTrabajadorEntity createDefault() {
+	    return new RolTrabajadorEntity();
+	}
+
 }

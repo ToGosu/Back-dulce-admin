@@ -19,18 +19,18 @@ public class ReciboDTO extends DTO {
 
 	public ReciboDTO() {
 		super(UUIDHelper.getUUIDHelper().getDefault());
-		setCliente(new ClienteDTO());
-		setTrabajador(new TrabajadorDTO());
-		setMetodoPago(new MetodoPagoDTO());
+		setCliente(ClienteDTO.createDefault());
+		setTrabajador(TrabajadorDTO.createDefault());
+		setMetodoPago(MetodoPagoDTO.createDefault());
 		setCodigo(NumericHelper.getDefault());
 		setProductosRecibo(new ArrayList<>());
 	}
 
 	public ReciboDTO(final UUID id) {
 		super(id);
-		setCliente(new ClienteDTO());
-		setTrabajador(new TrabajadorDTO());
-		setMetodoPago(new MetodoPagoDTO());
+		setCliente(ClienteDTO.createDefault());
+		setTrabajador(TrabajadorDTO.createDefault());
+		setMetodoPago(MetodoPagoDTO.createDefault());
 		setCodigo(NumericHelper.getDefault());
 		setProductosRecibo(new ArrayList<>());
 	}
@@ -89,5 +89,8 @@ public class ReciboDTO extends DTO {
 		return productosRecibo.stream()
 				.map(ProductoReciboDTO::getTotalProducto)
 				.reduce(BigDecimal.ZERO, BigDecimal::add);
+	}
+	public static ReciboDTO createDefault() {
+		return new ReciboDTO();
 	}
 }

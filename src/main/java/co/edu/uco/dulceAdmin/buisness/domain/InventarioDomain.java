@@ -17,13 +17,9 @@ public class InventarioDomain extends Domain {
 	private Date fechaCreacion;
 	private Date fechaVencimiento;
 	
-	// -------------------------------------------------------------------------
-	// Constructores
-	// -------------------------------------------------------------------------
-	
 	public InventarioDomain() {
 		super(UUIDHelper.getUUIDHelper().getDefault());
-		setProducto(new ProductoDomain());
+		setProducto(ProductoDomain.createDefault());
 		setStock(NumericHelper.getDefault());
 		setEsPerecedero(BooleanHelper.getDefault());
 		setFechaCreacion(DateHelper.getDefault());
@@ -32,7 +28,7 @@ public class InventarioDomain extends Domain {
 	
 	public InventarioDomain(final UUID id) {
 		super(id);
-		setProducto(new ProductoDomain());
+		setProducto(ProductoDomain.createDefault());
 		setStock(NumericHelper.getDefault());
 		setEsPerecedero(BooleanHelper.getDefault());
 		setFechaCreacion(DateHelper.getDefault());
@@ -88,6 +84,9 @@ public class InventarioDomain extends Domain {
 
 	public void setFechaVencimiento(final Date fechaVencimiento) {
 		this.fechaVencimiento = ObjectHelper.getDefault(fechaVencimiento, DateHelper.calculateExpirationDate(this.fechaCreacion, this.esPerecedero));
+	}
+	public static InventarioDomain createDefault() {
+		return new InventarioDomain();
 	}
 	
 	

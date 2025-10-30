@@ -31,4 +31,7 @@ public class RolTrabajadorDTO extends DTO {
 	public void setNombre(final String nombre) {
 		this.nombre = TextHelper.getDefaultWithTrim(nombre);
 	}
+	public static RolTrabajadorDTO createDefault() {
+	    return new RolTrabajadorDTO();
+	}
 }

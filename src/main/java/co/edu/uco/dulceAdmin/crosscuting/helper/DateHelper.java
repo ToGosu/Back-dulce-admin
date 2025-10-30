@@ -41,4 +41,9 @@ public final class DateHelper {
     public static boolean isExpired(final Date expirationDate) {
         return getDefault(expirationDate).before(new Date());
     }
+    
+    public static java.sql.Date convertToSqlDate(final java.util.Date date) {
+        return (date == null) ? null : new java.sql.Date(date.getTime());
+    }
+
 }

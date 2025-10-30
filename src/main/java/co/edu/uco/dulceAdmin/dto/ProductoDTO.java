@@ -17,14 +17,14 @@ public class ProductoDTO extends DTO {
 		super(UUIDHelper.getUUIDHelper().getDefault());
 		setNombre(TextHelper.getDefault());
 		setPrecio(NumericHelper.getDefault());
-		setTipo(new TipoProductoDTO());
+		setTipo(TipoProductoDTO.createDefault());
 	}
 	
 	public ProductoDTO(final UUID id) {
 		super(id);
 		setNombre(TextHelper.getDefault());
 		setPrecio(NumericHelper.getDefault());
-		setTipo(new TipoProductoDTO());
+		setTipo(TipoProductoDTO.createDefault());
 	}
 	
 	public ProductoDTO(final UUID id, final String nombre, final Integer precio, final TipoProductoDTO tipo) {
@@ -56,5 +56,8 @@ public class ProductoDTO extends DTO {
 	
 	public void setTipo(final TipoProductoDTO tipo) {
 		this.tipo = ObjectHelper.getDefault(tipo, new TipoProductoDTO());
+	}
+	public static ProductoDTO createDefault() {
+		return new ProductoDTO();
 	}
 }

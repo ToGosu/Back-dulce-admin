@@ -21,7 +21,7 @@ public class TrabajadorDTO extends DTO {
 		setApellido(TextHelper.getDefault());
 		setIdentificacion(TextHelper.getDefault());
 		setNumeroCelular(TextHelper.getDefault());
-		setRol(new RolTrabajadorDTO());
+		setRol(RolTrabajadorDTO.createDefault());
 		setContraseñaInicioSesion(TextHelper.getDefault());
 	}
 
@@ -31,7 +31,7 @@ public class TrabajadorDTO extends DTO {
 		setApellido(TextHelper.getDefault());
 		setIdentificacion(TextHelper.getDefault());
 		setNumeroCelular(TextHelper.getDefault());
-		setRol(new RolTrabajadorDTO());
+		setRol(RolTrabajadorDTO.createDefault());
 		setContraseñaInicioSesion(TextHelper.getDefault());
 	}
 
@@ -92,5 +92,8 @@ public class TrabajadorDTO extends DTO {
 
 	public void setContraseñaInicioSesion(final String contraseñaInicioSesion) {
 		this.contraseñaInicioSesion = TextHelper.getDefaultWithTrim(contraseñaInicioSesion);
+	}
+	public static TrabajadorDTO createDefault() {
+		return new TrabajadorDTO();
 	}
 }

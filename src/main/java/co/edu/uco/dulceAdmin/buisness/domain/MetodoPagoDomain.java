@@ -26,5 +26,8 @@ public class MetodoPagoDomain extends Domain {
 	public void setNombre(final String nombre) {
 		this.nombre = TextHelper.getDefaultWithTrim(nombre);
 	}
+	public static MetodoPagoDomain createDefault() {
+		return new MetodoPagoDomain();
+	}
 
 }

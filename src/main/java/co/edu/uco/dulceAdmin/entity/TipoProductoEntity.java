@@ -43,4 +43,7 @@ public class TipoProductoEntity extends Entity {
 	public void setDescripcion(final String descripcion) {
 		this.descripcion = TextHelper.getDefaultWithTrim(descripcion);
 	}
+	public static TipoProductoEntity createDefault() {
+		return new TipoProductoEntity();
+	}
 }

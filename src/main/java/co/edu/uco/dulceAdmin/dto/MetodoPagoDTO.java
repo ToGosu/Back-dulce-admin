@@ -31,4 +31,7 @@ public class MetodoPagoDTO extends DTO {
 	public void setNombre(final String nombre) {
 		this.nombre = TextHelper.getDefaultWithTrim(nombre);
 	}
+	public static MetodoPagoDTO createDefault() {
+		return new MetodoPagoDTO();
+	}
 }

@@ -20,16 +20,16 @@ public class InventarioEntity extends Entity {
 
 	public InventarioEntity() {
 		super(UUIDHelper.getUUIDHelper().getDefault());
-		setProducto(new ProductoEntity());
 		setStock(NumericHelper.getDefault());
 		setEsPerecedero(BooleanHelper.getDefault());
 		setFechaCreacion(DateHelper.getDefault());
 		setFechaVencimiento(DateHelper.calculateExpirationDate(getFechaCreacion(), getEsPerecedero()));
+		setProducto(ProductoEntity.createDefault());
 	}
 	
 	public InventarioEntity(final UUID id) {
 		super(id);
-		setProducto(new ProductoEntity());
+		setProducto(ProductoEntity.createDefault());
 		setStock(NumericHelper.getDefault());
 		setEsPerecedero(BooleanHelper.getDefault());
 		setFechaCreacion(DateHelper.getDefault());

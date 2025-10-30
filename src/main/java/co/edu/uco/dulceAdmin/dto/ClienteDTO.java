@@ -82,4 +82,7 @@ public class ClienteDTO extends DTO {
 	public void setCorreo(final String correo) {
 		this.correo = TextHelper.getDefaultWithTrim(correo);
 	}
+	public static ClienteDTO createDefault() {
+		return new ClienteDTO();
+	}
 }
